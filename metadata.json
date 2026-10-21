@@ -1,0 +1,6 @@
+{
+  "name": "ChatKeuangan AI",
+  "description": "Aplikasi pencatatan keuangan pribadi berbasis percakapan (chat) dengan asisten AI pintar dalam bahasa Indonesia.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
