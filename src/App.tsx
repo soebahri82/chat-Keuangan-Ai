@@ -19,6 +19,7 @@ import { GoalsView } from './components/GoalsView';
 import { TransactionsView } from './components/TransactionsView';
 import { CategoriesView } from './components/CategoriesView';
 import { TransactionModal } from './components/TransactionModal';
+import { OfflineIndicator } from './components/OfflineIndicator';
 import { fetchAppData, saveAppData, resetAppData } from './services/api';
 
 const LOCAL_STORAGE_KEY = 'chatkeuangan_ai_state_v1';
@@ -403,6 +404,9 @@ export default function App() {
         initialData={editingTransaction}
         categories={categories}
       />
+
+      {/* Offline Status Toast */}
+      <OfflineIndicator />
     </div>
   );
 }

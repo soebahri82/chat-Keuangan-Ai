@@ -62,6 +62,36 @@ export function formatTimeIndo(isoString: string): string {
   }
 }
 
+export function formatMonthYearIndo(yyyyMm: string): string {
+  if (!yyyyMm) return '';
+  const parts = yyyyMm.split('-');
+  if (parts.length >= 2) {
+    const year = parts[0];
+    const monthIdx = parseInt(parts[1], 10) - 1;
+    const months = [
+      'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+      'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+    ];
+    return `${months[monthIdx] || parts[1]} ${year}`;
+  }
+  return yyyyMm;
+}
+
+export function formatShortRupiah(val: number): string {
+  const abs = Math.abs(val);
+  const sign = val < 0 ? '-' : '';
+  if (abs >= 1_000_000_000) {
+    return `${sign}${(abs / 1_000_000_000).toFixed(1).replace('.0', '')}M`;
+  }
+  if (abs >= 1_000_000) {
+    return `${sign}${(abs / 1_000_000).toFixed(1).replace('.0', '')}jt`;
+  }
+  if (abs >= 1_000) {
+    return `${sign}${(abs / 1_000).toFixed(0)}rb`;
+  }
+  return `${sign}${abs}`;
+}
+
 export function exportToCSV(filename: string, rows: object[]): void {
   if (!rows || !rows.length) return;
   const separator = ',';

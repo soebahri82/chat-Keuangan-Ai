@@ -17,6 +17,7 @@ import {
 import { Category, TransactionType, UserPreferences } from '../types';
 import { formatRupiah } from '../utils/formatters';
 import { getCategoryColorClasses } from '../utils/categoryIcons';
+import { PWAInstallButton } from './PWAInstallButton';
 
 interface CategoriesViewProps {
   categories: Category[];
@@ -311,6 +312,9 @@ export const CategoriesView: React.FC<CategoriesViewProps> = ({
           })}
         </div>
       </div>
+
+      {/* PWA Install & Offline Feature Banner */}
+      <PWAInstallButton variant="card" />
 
       {/* AI Keyword Learning & Data Reset Section */}
       <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800 p-6 shadow-xs space-y-4">

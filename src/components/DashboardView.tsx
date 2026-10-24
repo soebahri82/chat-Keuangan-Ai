@@ -18,6 +18,7 @@ import {
 import { Transaction, Category } from '../types';
 import { formatRupiah, formatDateIndo, getRelativeDateLabel } from '../utils/formatters';
 import { getCategoryColorClasses } from '../utils/categoryIcons';
+import { MonthlyReport } from './MonthlyReport';
 
 interface DashboardViewProps {
   initialBalance: number;
@@ -166,6 +167,13 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
+            <a
+              href="#laporan-bulanan"
+              className="flex items-center space-x-2 px-4 py-2.5 bg-emerald-500/30 hover:bg-emerald-500/40 text-white rounded-xl text-xs font-bold backdrop-blur-sm border border-emerald-400/40 transition"
+            >
+              <BarChart3 className="w-4 h-4 text-emerald-200" />
+              <span>Laporan Bulanan</span>
+            </a>
             <button
               onClick={onNavigateToChat}
               className="flex items-center space-x-2 px-4 py-2.5 bg-white text-emerald-800 hover:bg-emerald-50 rounded-xl text-xs font-bold shadow-md transition"
@@ -362,6 +370,15 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
           </div>
         </div>
       </div>
+
+      {/* Laporan Bulanan Otomatis (Recharts) */}
+      <section id="laporan-bulanan" className="scroll-mt-6">
+        <MonthlyReport
+          transactions={transactions}
+          categories={categories}
+          initialBalance={initialBalance}
+        />
+      </section>
 
       {/* Charts Section: 7-Day Bar Chart & Category Breakdown */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">

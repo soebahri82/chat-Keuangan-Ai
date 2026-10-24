@@ -12,6 +12,7 @@ import {
   Target,
 } from 'lucide-react';
 import { formatRupiah } from '../utils/formatters';
+import { PWAInstallButton } from './PWAInstallButton';
 
 export type ActiveTab = 'chat' | 'dashboard' | 'goals' | 'transactions' | 'categories';
 
@@ -134,6 +135,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </div>
               </div>
             </div>
+
+            <PWAInstallButton />
 
             <button
               onClick={onOpenManualModal}
