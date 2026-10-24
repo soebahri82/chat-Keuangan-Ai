@@ -34,7 +34,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenManualModal,
 }) => {
   return (
-    <header className="sticky top-0 z-40 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 transition-colors">
+    <header className="sticky top-0 z-40 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 transition-colors w-full max-w-full overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo & Brand */}
@@ -151,10 +151,10 @@ export const Navbar: React.FC<NavbarProps> = ({
       </div>
 
       {/* Mobile Tab Bar */}
-      <div className="md:hidden flex items-center justify-around border-t border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900 px-1 py-1.5">
+      <div className="md:hidden flex items-center justify-around border-t border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900 px-0.5 py-1 w-full max-w-full overflow-hidden">
         <button
           onClick={() => setActiveTab('chat')}
-          className={`flex flex-col items-center py-1 px-2 text-xs font-medium rounded-lg ${
+          className={`flex flex-col items-center py-1 px-1 text-[11px] font-medium rounded-lg transition-colors ${
             activeTab === 'chat'
               ? 'text-emerald-600 dark:text-emerald-400 font-semibold'
               : 'text-slate-500 dark:text-slate-400'
@@ -165,7 +165,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </button>
         <button
           onClick={() => setActiveTab('dashboard')}
-          className={`flex flex-col items-center py-1 px-2 text-xs font-medium rounded-lg ${
+          className={`flex flex-col items-center py-1 px-1 text-[11px] font-medium rounded-lg transition-colors ${
             activeTab === 'dashboard'
               ? 'text-emerald-600 dark:text-emerald-400 font-semibold'
               : 'text-slate-500 dark:text-slate-400'
@@ -176,7 +176,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </button>
         <button
           onClick={() => setActiveTab('goals')}
-          className={`flex flex-col items-center py-1 px-2 text-xs font-medium rounded-lg ${
+          className={`flex flex-col items-center py-1 px-1 text-[11px] font-medium rounded-lg transition-colors ${
             activeTab === 'goals'
               ? 'text-emerald-600 dark:text-emerald-400 font-semibold'
               : 'text-slate-500 dark:text-slate-400'
@@ -187,7 +187,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </button>
         <button
           onClick={() => setActiveTab('transactions')}
-          className={`flex flex-col items-center py-1 px-2 text-xs font-medium rounded-lg ${
+          className={`flex flex-col items-center py-1 px-1 text-[11px] font-medium rounded-lg transition-colors ${
             activeTab === 'transactions'
               ? 'text-emerald-600 dark:text-emerald-400 font-semibold'
               : 'text-slate-500 dark:text-slate-400'
@@ -198,7 +198,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </button>
         <button
           onClick={() => setActiveTab('categories')}
-          className={`flex flex-col items-center py-1 px-2 text-xs font-medium rounded-lg ${
+          className={`flex flex-col items-center py-1 px-1 text-[11px] font-medium rounded-lg transition-colors ${
             activeTab === 'categories'
               ? 'text-emerald-600 dark:text-emerald-400 font-semibold'
               : 'text-slate-500 dark:text-slate-400'

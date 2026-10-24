@@ -302,7 +302,7 @@ export const MonthlyReport: React.FC<MonthlyReportProps> = ({
   };
 
   return (
-    <div className="bg-white dark:bg-slate-900 rounded-3xl p-5 sm:p-7 border border-slate-200/80 dark:border-slate-800 shadow-sm space-y-6">
+    <div className="bg-white dark:bg-slate-900 rounded-3xl p-4 sm:p-7 border border-slate-200/80 dark:border-slate-800 shadow-sm space-y-6 w-full max-w-full min-w-0 overflow-hidden">
       {/* Header with Title, Period Selector & Actions */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-100 dark:border-slate-800">
         <div>
@@ -406,40 +406,40 @@ export const MonthlyReport: React.FC<MonthlyReportProps> = ({
       </div>
 
       {/* Monthly Financial Highlights Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 w-full max-w-full min-w-0">
         {/* Total Income */}
-        <div className="p-4 rounded-2xl bg-emerald-50/70 dark:bg-emerald-950/20 border border-emerald-200/60 dark:border-emerald-800/40">
-          <span className="text-[11px] font-semibold text-emerald-800 dark:text-emerald-400 uppercase tracking-wider block">
+        <div className="p-3.5 sm:p-4 rounded-2xl bg-emerald-50/70 dark:bg-emerald-950/20 border border-emerald-200/60 dark:border-emerald-800/40 min-w-0 overflow-hidden">
+          <span className="text-[10px] sm:text-[11px] font-semibold text-emerald-800 dark:text-emerald-400 uppercase tracking-wider block truncate">
             Pemasukan
           </span>
-          <div className="text-base sm:text-xl font-extrabold text-emerald-700 dark:text-emerald-300 mt-1">
+          <div className="text-sm sm:text-base lg:text-xl font-extrabold text-emerald-700 dark:text-emerald-300 mt-1 truncate">
             +{formatRupiah(totalIncome)}
           </div>
-          <span className="text-[10px] text-slate-500 dark:text-slate-400 mt-1 block">
+          <span className="text-[10px] text-slate-500 dark:text-slate-400 mt-1 block truncate">
             {monthlyTransactions.filter(t => t.type === 'income').length} transaksi
           </span>
         </div>
 
         {/* Total Expense */}
-        <div className="p-4 rounded-2xl bg-rose-50/70 dark:bg-rose-950/20 border border-rose-200/60 dark:border-rose-800/40">
-          <span className="text-[11px] font-semibold text-rose-800 dark:text-rose-400 uppercase tracking-wider block">
+        <div className="p-3.5 sm:p-4 rounded-2xl bg-rose-50/70 dark:bg-rose-950/20 border border-rose-200/60 dark:border-rose-800/40 min-w-0 overflow-hidden">
+          <span className="text-[10px] sm:text-[11px] font-semibold text-rose-800 dark:text-rose-400 uppercase tracking-wider block truncate">
             Pengeluaran
           </span>
-          <div className="text-base sm:text-xl font-extrabold text-rose-700 dark:text-rose-300 mt-1">
+          <div className="text-sm sm:text-base lg:text-xl font-extrabold text-rose-700 dark:text-rose-300 mt-1 truncate">
             -{formatRupiah(totalExpense)}
           </div>
-          <span className="text-[10px] text-slate-500 dark:text-slate-400 mt-1 block">
+          <span className="text-[10px] text-slate-500 dark:text-slate-400 mt-1 block truncate">
             {monthlyTransactions.filter(t => t.type === 'expense').length} transaksi
           </span>
         </div>
 
         {/* Net Flow */}
-        <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60">
-          <span className="text-[11px] font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider block">
+        <div className="p-3.5 sm:p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 min-w-0 overflow-hidden">
+          <span className="text-[10px] sm:text-[11px] font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider block truncate">
             Arus Kas Bersih
           </span>
           <div
-            className={`text-base sm:text-xl font-extrabold mt-1 ${
+            className={`text-sm sm:text-base lg:text-xl font-extrabold mt-1 truncate ${
               netCashflow >= 0
                 ? 'text-emerald-600 dark:text-emerald-400'
                 : 'text-rose-600 dark:text-rose-400'
@@ -448,75 +448,77 @@ export const MonthlyReport: React.FC<MonthlyReportProps> = ({
             {netCashflow >= 0 ? '+' : ''}
             {formatRupiah(netCashflow)}
           </div>
-          <span className="text-[10px] text-slate-500 dark:text-slate-400 mt-1 block">
-            {netCashflow >= 0 ? 'Surplus bulanan ✅' : 'Defisit bulanan ⚠️'}
+          <span className="text-[10px] text-slate-500 dark:text-slate-400 mt-1 block truncate">
+            {netCashflow >= 0 ? 'Surplus ✅' : 'Defisit ⚠️'}
           </span>
         </div>
 
         {/* Savings Rate */}
-        <div className="p-4 rounded-2xl bg-teal-50/70 dark:bg-teal-950/20 border border-teal-200/60 dark:border-teal-800/40">
-          <span className="text-[11px] font-semibold text-teal-800 dark:text-teal-400 uppercase tracking-wider block">
+        <div className="p-3.5 sm:p-4 rounded-2xl bg-teal-50/70 dark:bg-teal-950/20 border border-teal-200/60 dark:border-teal-800/40 min-w-0 overflow-hidden">
+          <span className="text-[10px] sm:text-[11px] font-semibold text-teal-800 dark:text-teal-400 uppercase tracking-wider block truncate">
             Rasio Tabungan
           </span>
-          <div className="text-base sm:text-xl font-extrabold text-teal-700 dark:text-teal-300 mt-1">
+          <div className="text-sm sm:text-base lg:text-xl font-extrabold text-teal-700 dark:text-teal-300 mt-1 truncate">
             {savingsRate}%
           </div>
-          <span className="text-[10px] text-slate-500 dark:text-slate-400 mt-1 block">
-            {savingsRate >= 20 ? 'Sehat (≥20%)' : savingsRate > 0 ? 'Cukup (<20%)' : 'Tanpa sisa'}
+          <span className="text-[10px] text-slate-500 dark:text-slate-400 mt-1 block truncate">
+            {savingsRate >= 20 ? 'Sehat (≥20%)' : savingsRate > 0 ? 'Cukup' : '0%'}
           </span>
         </div>
       </div>
 
       {/* Recharts Views Selector */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2">
-        <div className="flex items-center space-x-1.5 p-1 bg-slate-100 dark:bg-slate-800 rounded-xl self-start">
-          <button
-            onClick={() => setChartView('both')}
-            className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition ${
-              chartView === 'both'
-                ? 'bg-white dark:bg-slate-700 text-emerald-700 dark:text-emerald-300 shadow-xs'
-                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900'
-            }`}
-          >
-            <Layers className="w-3.5 h-3.5" />
-            <span>Tampilan Lengkap</span>
-          </button>
-          <button
-            onClick={() => setChartView('bar')}
-            className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition ${
-              chartView === 'bar'
-                ? 'bg-white dark:bg-slate-700 text-emerald-700 dark:text-emerald-300 shadow-xs'
-                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900'
-            }`}
-          >
-            <BarChart3 className="w-3.5 h-3.5" />
-            <span>Komparasi Kategori</span>
-          </button>
-          <button
-            onClick={() => setChartView('pieExpense')}
-            className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition ${
-              chartView === 'pieExpense'
-                ? 'bg-white dark:bg-slate-700 text-emerald-700 dark:text-emerald-300 shadow-xs'
-                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900'
-            }`}
-          >
-            <PieIcon className="w-3.5 h-3.5 text-rose-500" />
-            <span>Donat Pengeluaran</span>
-          </button>
-          <button
-            onClick={() => setChartView('pieIncome')}
-            className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition ${
-              chartView === 'pieIncome'
-                ? 'bg-white dark:bg-slate-700 text-emerald-700 dark:text-emerald-300 shadow-xs'
-                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900'
-            }`}
-          >
-            <PieIcon className="w-3.5 h-3.5 text-emerald-500" />
-            <span>Donat Pemasukan</span>
-          </button>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2 w-full max-w-full">
+        <div className="w-full sm:w-auto overflow-x-auto pb-1 sm:pb-0 -mx-1 px-1">
+          <div className="inline-flex items-center gap-1 sm:gap-1.5 p-1 bg-slate-100 dark:bg-slate-800 rounded-xl min-w-max">
+            <button
+              onClick={() => setChartView('both')}
+              className={`flex items-center space-x-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-bold transition whitespace-nowrap ${
+                chartView === 'both'
+                  ? 'bg-white dark:bg-slate-700 text-emerald-700 dark:text-emerald-300 shadow-xs'
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900'
+              }`}
+            >
+              <Layers className="w-3.5 h-3.5" />
+              <span>Tampilan Lengkap</span>
+            </button>
+            <button
+              onClick={() => setChartView('bar')}
+              className={`flex items-center space-x-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-bold transition whitespace-nowrap ${
+                chartView === 'bar'
+                  ? 'bg-white dark:bg-slate-700 text-emerald-700 dark:text-emerald-300 shadow-xs'
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900'
+              }`}
+            >
+              <BarChart3 className="w-3.5 h-3.5" />
+              <span>Komparasi Kategori</span>
+            </button>
+            <button
+              onClick={() => setChartView('pieExpense')}
+              className={`flex items-center space-x-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-bold transition whitespace-nowrap ${
+                chartView === 'pieExpense'
+                  ? 'bg-white dark:bg-slate-700 text-emerald-700 dark:text-emerald-300 shadow-xs'
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900'
+              }`}
+            >
+              <PieIcon className="w-3.5 h-3.5 text-rose-500" />
+              <span>Donat Pengeluaran</span>
+            </button>
+            <button
+              onClick={() => setChartView('pieIncome')}
+              className={`flex items-center space-x-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-bold transition whitespace-nowrap ${
+                chartView === 'pieIncome'
+                  ? 'bg-white dark:bg-slate-700 text-emerald-700 dark:text-emerald-300 shadow-xs'
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900'
+              }`}
+            >
+              <PieIcon className="w-3.5 h-3.5 text-emerald-500" />
+              <span>Donat Pemasukan</span>
+            </button>
+          </div>
         </div>
 
-        <div className="text-xs text-slate-500 dark:text-slate-400 flex items-center space-x-1">
+        <div className="text-xs text-slate-500 dark:text-slate-400 flex items-center space-x-1 shrink-0">
           <Calendar className="w-3.5 h-3.5 text-slate-400" />
           <span>Periode: <strong className="text-slate-700 dark:text-slate-200">{formatMonthYearIndo(selectedMonth)}</strong></span>
         </div>
@@ -537,7 +539,7 @@ export const MonthlyReport: React.FC<MonthlyReportProps> = ({
         <div className="space-y-6">
           {/* View 1: Both or Bar Chart */}
           {(chartView === 'both' || chartView === 'bar') && (
-            <div className="bg-slate-50/60 dark:bg-slate-950/40 p-4 sm:p-5 rounded-2xl border border-slate-200/70 dark:border-slate-800">
+            <div className="bg-slate-50/60 dark:bg-slate-950/40 p-3 sm:p-5 rounded-2xl border border-slate-200/70 dark:border-slate-800 min-w-0 overflow-hidden w-full max-w-full">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
                 <div>
                   <h4 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
@@ -561,7 +563,7 @@ export const MonthlyReport: React.FC<MonthlyReportProps> = ({
               </div>
 
               {/* Bar Chart Container */}
-              <div className="w-full h-72 sm:h-80">
+              <div className="w-full min-w-0 overflow-hidden h-72 sm:h-80">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart
                     data={barChartData}
@@ -571,7 +573,7 @@ export const MonthlyReport: React.FC<MonthlyReportProps> = ({
                     <XAxis
                       dataKey="name"
                       tick={{ fontSize: 11 }}
-                      interval={0}
+                      interval="preserveStartEnd"
                       angle={-20}
                       textAnchor="end"
                       height={45}
@@ -605,11 +607,11 @@ export const MonthlyReport: React.FC<MonthlyReportProps> = ({
             <div
               className={`grid grid-cols-1 ${
                 chartView === 'both' ? 'lg:grid-cols-2' : ''
-              } gap-6`}
+              } gap-6 w-full max-w-full min-w-0`}
             >
               {/* Expense Donut Chart */}
               {(chartView === 'both' || chartView === 'pieExpense') && (
-                <div className="bg-slate-50/60 dark:bg-slate-950/40 p-4 sm:p-5 rounded-2xl border border-slate-200/70 dark:border-slate-800 flex flex-col justify-between">
+                <div className="bg-slate-50/60 dark:bg-slate-950/40 p-3 sm:p-5 rounded-2xl border border-slate-200/70 dark:border-slate-800 flex flex-col justify-between min-w-0 overflow-hidden w-full max-w-full">
                   <div>
                     <div className="flex items-center justify-between mb-2">
                       <h4 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
@@ -629,7 +631,7 @@ export const MonthlyReport: React.FC<MonthlyReportProps> = ({
                         Belum ada pengeluaran di bulan ini.
                       </div>
                     ) : (
-                      <div className="w-full h-64 sm:h-72">
+                      <div className="w-full min-w-0 overflow-hidden h-64 sm:h-72">
                         <ResponsiveContainer width="100%" height="100%">
                           <PieChart>
                             <Tooltip content={<CustomPieTooltip />} />
@@ -682,7 +684,7 @@ export const MonthlyReport: React.FC<MonthlyReportProps> = ({
 
               {/* Income Donut Chart */}
               {(chartView === 'both' || chartView === 'pieIncome') && (
-                <div className="bg-slate-50/60 dark:bg-slate-950/40 p-4 sm:p-5 rounded-2xl border border-slate-200/70 dark:border-slate-800 flex flex-col justify-between">
+                <div className="bg-slate-50/60 dark:bg-slate-950/40 p-3 sm:p-5 rounded-2xl border border-slate-200/70 dark:border-slate-800 flex flex-col justify-between min-w-0 overflow-hidden w-full max-w-full">
                   <div>
                     <div className="flex items-center justify-between mb-2">
                       <h4 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
@@ -702,7 +704,7 @@ export const MonthlyReport: React.FC<MonthlyReportProps> = ({
                         Belum ada pemasukan di bulan ini.
                       </div>
                     ) : (
-                      <div className="w-full h-64 sm:h-72">
+                      <div className="w-full min-w-0 overflow-hidden h-64 sm:h-72">
                         <ResponsiveContainer width="100%" height="100%">
                           <PieChart>
                             <Tooltip content={<CustomPieTooltip />} />
@@ -756,8 +758,8 @@ export const MonthlyReport: React.FC<MonthlyReportProps> = ({
           )}
 
           {/* Per-Category Detailed Breakdown Table */}
-          <div className="border border-slate-200/80 dark:border-slate-800 rounded-2xl overflow-hidden">
-            <div className="bg-slate-50 dark:bg-slate-800/60 px-5 py-3.5 border-b border-slate-200/80 dark:border-slate-800 flex items-center justify-between">
+          <div className="border border-slate-200/80 dark:border-slate-800 rounded-2xl overflow-hidden w-full max-w-full min-w-0">
+            <div className="bg-slate-50 dark:bg-slate-800/60 px-4 sm:px-5 py-3.5 border-b border-slate-200/80 dark:border-slate-800 flex items-center justify-between">
               <div className="flex items-center space-x-2">
                 <Scale className="w-4 h-4 text-teal-600" />
                 <h4 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">
@@ -769,8 +771,8 @@ export const MonthlyReport: React.FC<MonthlyReportProps> = ({
               </span>
             </div>
 
-            <div className="divide-y divide-slate-100 dark:divide-slate-800/80 overflow-x-auto">
-              <table className="w-full text-left text-xs">
+            <div className="divide-y divide-slate-100 dark:divide-slate-800/80 overflow-x-auto w-full max-w-full">
+              <table className="w-full min-w-[560px] text-left text-xs">
                 <thead>
                   <tr className="bg-slate-50/40 dark:bg-slate-900/40 text-[11px] text-slate-500 dark:text-slate-400 font-semibold border-b border-slate-100 dark:border-slate-800">
                     <th className="py-2.5 px-4">Kategori</th>

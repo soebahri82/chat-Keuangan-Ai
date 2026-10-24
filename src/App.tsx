@@ -276,7 +276,7 @@ export default function App() {
     .reduce((s, t) => s + t.amount, 0);
 
   return (
-    <div className="min-h-screen bg-slate-100/70 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans antialiased flex flex-col">
+    <div className="min-h-screen bg-slate-100/70 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans antialiased flex flex-col w-full max-w-full overflow-x-hidden">
       {/* Top Navbar */}
       <Navbar
         activeTab={activeTab}
@@ -291,7 +291,7 @@ export default function App() {
       />
 
       {/* Main Content Area */}
-      <main className="flex-1">
+      <main className="flex-1 w-full max-w-full overflow-x-hidden min-w-0">
         {activeTab === 'chat' && (
           <ChatView
             messages={messages}
@@ -365,7 +365,7 @@ export default function App() {
       </main>
 
       {/* Elegant Footer */}
-      <footer className="mt-auto border-t border-slate-200/80 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md py-3 px-4 transition-colors z-30">
+      <footer className="mt-auto border-t border-slate-200/80 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md py-3 px-4 transition-colors z-30 w-full max-w-full overflow-hidden">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2.5 text-xs">
           <div className="flex items-center space-x-2 text-slate-500 dark:text-slate-400">
             <div className="w-5 h-5 rounded-md bg-gradient-to-tr from-emerald-600 via-teal-600 to-cyan-500 flex items-center justify-center text-white text-[10px] font-bold shadow-xs">

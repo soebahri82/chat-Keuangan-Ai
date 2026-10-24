@@ -148,7 +148,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
     monthIncome > 0 ? Math.max(0, Math.round((monthNet / monthIncome) * 100)) : 0;
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+    <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6 space-y-6 w-full max-w-full min-w-0 overflow-x-hidden">
       {/* Top Banner / Welcome with Quick AI Action */}
       <div className="bg-gradient-to-r from-emerald-700 via-teal-700 to-cyan-800 rounded-3xl p-6 sm:p-8 text-white shadow-lg relative overflow-hidden">
         <div className="absolute right-0 top-0 -mt-6 -mr-6 w-56 h-56 rounded-full bg-white/10 blur-2xl pointer-events-none" />
@@ -372,7 +372,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
       </div>
 
       {/* Laporan Bulanan Otomatis (Recharts) */}
-      <section id="laporan-bulanan" className="scroll-mt-6">
+      <section id="laporan-bulanan" className="scroll-mt-6 w-full max-w-full min-w-0">
         <MonthlyReport
           transactions={transactions}
           categories={categories}
@@ -381,10 +381,10 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
       </section>
 
       {/* Charts Section: 7-Day Bar Chart & Category Breakdown */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 w-full max-w-full min-w-0">
         {/* 7-Day Cashflow Bar Chart (2 cols) */}
-        <div className="lg:col-span-2 bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-xs">
-          <div className="flex items-center justify-between mb-6">
+        <div className="lg:col-span-2 bg-white dark:bg-slate-900 p-4 sm:p-6 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-xs min-w-0 overflow-hidden">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
             <div className="flex items-center space-x-2">
               <BarChart3 className="w-5 h-5 text-emerald-600" />
               <h3 className="text-base font-bold text-slate-900 dark:text-white">
@@ -404,7 +404,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
           </div>
 
           {/* Bar Chart Visualization */}
-          <div className="h-60 flex items-end justify-between gap-2 pt-6 pb-2 border-b border-slate-100 dark:border-slate-800">
+          <div className="h-60 flex items-end justify-between gap-1.5 sm:gap-2 pt-6 pb-2 border-b border-slate-100 dark:border-slate-800 overflow-hidden">
             {last7DaysLabels.map((day, idx) => {
               const incomeHeightPercent = Math.min(
                 100,
@@ -416,10 +416,10 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
               );
 
               return (
-                <div key={idx} className="flex-1 flex flex-col items-center h-full justify-end group">
+                <div key={idx} className="flex-1 flex flex-col items-center h-full justify-end group min-w-0">
                   <div className="w-full flex items-end justify-center gap-1 sm:gap-1.5 h-full relative">
                     {/* Hover tooltip */}
-                    <div className="absolute -top-12 opacity-0 group-hover:opacity-100 pointer-events-none transition bg-slate-900 text-white text-[10px] p-1.5 rounded shadow-lg z-20 whitespace-nowrap">
+                    <div className="absolute -top-12 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 pointer-events-none transition bg-slate-900 text-white text-[10px] p-1.5 rounded shadow-lg z-20 whitespace-nowrap">
                       <div>Masuk: +{formatRupiah(day.income)}</div>
                       <div>Keluar: -{formatRupiah(day.expense)}</div>
                     </div>
@@ -427,7 +427,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
                     {/* Income Bar */}
                     <div
                       style={{ height: `${day.income > 0 ? incomeHeightPercent : 2}%` }}
-                      className={`w-3 sm:w-5 rounded-t-sm transition-all duration-500 ${
+                      className={`w-2.5 sm:w-5 rounded-t-sm transition-all duration-500 ${
                         day.income > 0 ? 'bg-emerald-500 group-hover:bg-emerald-400' : 'bg-slate-200 dark:bg-slate-800'
                       }`}
                     />
@@ -435,7 +435,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
                     {/* Expense Bar */}
                     <div
                       style={{ height: `${day.expense > 0 ? expenseHeightPercent : 2}%` }}
-                      className={`w-3 sm:w-5 rounded-t-sm transition-all duration-500 ${
+                      className={`w-2.5 sm:w-5 rounded-t-sm transition-all duration-500 ${
                         day.expense > 0 ? 'bg-rose-500 group-hover:bg-rose-400' : 'bg-slate-200 dark:bg-slate-800'
                       }`}
                     />
@@ -448,14 +448,14 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             })}
           </div>
 
-          <div className="mt-4 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+          <div className="mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-slate-500 dark:text-slate-400">
             <span>Rata-rata pengeluaran harian: {formatRupiah(Math.round(weekExpense / 7))}</span>
             <span className="font-semibold text-emerald-600">Terupdate otomatis via Chat AI</span>
           </div>
         </div>
 
         {/* Category Breakdown (1 col) */}
-        <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-xs flex flex-col justify-between">
+        <div className="bg-white dark:bg-slate-900 p-4 sm:p-6 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-xs flex flex-col justify-between min-w-0 overflow-hidden">
           <div>
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center space-x-2">
